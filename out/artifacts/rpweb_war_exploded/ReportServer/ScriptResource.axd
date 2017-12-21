@@ -5,8 +5,6 @@
 <%@ page import = "javax.servlet.http.*"%>
 <%@ page import = "javax.servlet.http.*"%>
 
-
-
 <%
-        request.getRequestDispatcher("/resource.jsp?go=" + URLEncoder.encode("/ReportServer/ScriptResource.axd?"+request.getQueryString(), "UTF-8")).forward(request,response);
+    request.getRequestDispatcher("/resource.jsp?go=" + URLEncoder.encode("/ReportServer/ScriptResource.axd?"+request.getQueryString(), "UTF-8")).forward(request,response);
 %>

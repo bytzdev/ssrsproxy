@@ -1,247 +1,62 @@
-<%@ page import = "java.util.*"%>
-<%@ page import = "java.net.*"%>
-<%@ page import = "java.io.*"%>
-<%@ page import = "javax.servlet.*"%>
-<%@ page import = "javax.servlet.http.*"%>
-<%@ page import = "javax.servlet.http.*"%>
-<%@ page import="org.apache.commons.lang3.StringEscapeUtils" %>
-
-<%!
-  private final static boolean DEBUG = true;
-  private final static int BUFFER_SIZE = 2048;
-  private final static String  SRC_S = "src=\"";
-  private final static String  REPORT_SERVER = "/ReportServer/";
-  private final static String  HREF_H = "href=\"";
-  private final static String  RESOURCE_URL = "resource.jsp?go=";
-  private final static String  SERVER_URL = "http://192.168.1.10";
-  private final static String  REPORT_URL = "http://192.168.1.10/ReportServer/Pages/ReportViewer.aspx";
-%>
-
-<%
-  requestServer(request, response);
-%>
-
-<%!
-  public void requestServer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    try {
-      if (DEBUG) {
-        System.out.println("\nInitializing Request");
-        System.out.println("---------------------------");
-      }
-
-      Authenticator.setDefault(new ReportAuthenticator());
-
-      // Generate parameter string from request
-      String parameterString = "";//"rs:Command=Render&rc:Toolbar=false";
-      String requestMethod =  request.getMethod();
-
-      //if (requestMethod.equals("POST")) {
-        Enumeration paramEnum = request.getParameterNames();
-
-        String currentParam;
-        while(paramEnum.hasMoreElements()) {
-          currentParam = (String) paramEnum.nextElement();
-          if (!"reportName".equals(currentParam)) {
-            if (request.getParameter(currentParam) == null || "".equals(request.getParameter(currentParam))) {
-              if (parameterString != "") {
-                parameterString += "&";
-              }
-              parameterString += URLEncoder.encode(currentParam, "UTF-8");
-            } else {
-              if (parameterString != "") {
-                parameterString += "&";
-              }
-              parameterString += URLEncoder.encode(currentParam, "UTF-8") + "=" + URLEncoder.encode(request.getParameter(currentParam), "UTF-8");
-            }
-          }
-        }
-      // }
-      String urlString = null;
-
-      // Establish HTTP GET connection to report server
-      if(requestMethod.equals("GET")) {
-        urlString = REPORT_URL + "?" + URLEncoder.encode(request.getParameter("reportName"), "UTF-8");
-      }else if(requestMethod.equals("POST")) {
-        urlString = REPORT_URL + "?" + URLEncoder.encode(request.getParameter("reportName"), "UTF-8");
-      }
-      if(DEBUG)
-      {
-        System.out.println("ReportRequest - Parameter String: " + parameterString);
-        System.out.println("ReportRequest - Report retrieved: " + urlString);
-        System.out.println("ReportRequest - Method:" + requestMethod);
-      }
-
-
-      if (urlString == null)
-      {
-        // Bail out if no report name is found.
-        ServletOutputStream responseErrorStream = response.getOutputStream();
-        responseErrorStream.println("ERROR: No report name specified");
-        responseErrorStream.close();
-        return;
-      }
-
-      URL url = new URL(urlString);
-
-      Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP,new InetSocketAddress("127.0.0.1", 8888));
-
-      HttpURLConnection serverConnection = (HttpURLConnection) url.openConnection();
-
-
-      serverConnection.setRequestMethod("POST");
-      serverConnection.setDoOutput(true);
-//      serverConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
-//      if (requestMethod.equals("POST")) {
-//        serverConnection.setDoOutput(true);
-//      } else {
-//        serverConnection.setDoOutput(false);
-//        serverConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
-//      }
-      serverConnection.setUseCaches(false);
-      serverConnection.setFollowRedirects(false);
-      serverConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
-      serverConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
-      serverConnection.setRequestProperty("Content-length", Integer.toString(parameterString.length()));
-
-
-      // Send parameter string to report server
-      //if (requestMethod.equals("POST")) {
-        PrintWriter repOutStream = new PrintWriter(serverConnection.getOutputStream());
-
-        repOutStream.println(parameterString);
-
-        repOutStream.close();
-      //}
-
-      forwardResponse(serverConnection, response);
-
-    } catch (Exception e) {
-      e.printStackTrace();
-
-      // Alert the client there has been an error.
-      ServletOutputStream responseErrorStream = response.getOutputStream();
-      responseErrorStream.println("There has been an error.  Please check the system log for details.");
-      responseErrorStream.close();
-
+<html>
+<head>
+  <title>SSRS PROXY</title>
+  <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+  <style>
+    li{
+      padding:2px;
+      font-size:13px;
     }
-
-  }
-
-  private void forwardResponse(HttpURLConnection serverConnection, HttpServletResponse clientResponse) throws ServletException, IOException {
-
-    // Take the server's response and forward it to the client.
-
-//    String cookie = serverConnection.getHeaderField("Set-Cookie");
-//    if(cookie == null) {
-//      System.out.println("ReportRequest - ERROR: No cookie provided by report server.  Aborting.");
-//      return;
-//    }
-//
-//    if(cookie.indexOf(";") != -1) {
-//      cookie = cookie.substring(0, cookie.indexOf(";"));
-//    }
-
-    String contentType = serverConnection.getContentType();
-
-    clientResponse.setContentType(contentType);
-    clientResponse.setHeader("Content-disposition", serverConnection.getHeaderField("Content-disposition"));
-
-    InputStream serverInStream = serverConnection.getInputStream();
-    ServletOutputStream clientOutStream = clientResponse.getOutputStream();
-
-    if (!contentType.contains("text/html")) {
-      // Use a buffered stream to send all binary formats.
-      BufferedInputStream bis = new BufferedInputStream(serverInStream);
-      BufferedOutputStream bos = new BufferedOutputStream(clientOutStream);
-
-      byte[] buff = new byte[BUFFER_SIZE];
-      int bytesRead;
-
-      while (-1 != (bytesRead = bis.read(buff, 0, BUFFER_SIZE))) {
-        bos.write(buff, 0, bytesRead);
-      }
-      bis.close();
-      bos.close();
-    } else {
-      /*
-       * Use a character stream to send HTML to the client, replacing
-       */
-      String currentWindow2 = "";
-      String currentWindow = "";
-      String url = "";
-      int itemsFound = 0;
-      for (int ch; (ch = serverInStream.read()) != -1; ) {
-        currentWindow2 += (char) ch;
-      }
-      currentWindow2 = currentWindow2.replace("ReportViewer.aspx?","index.jsp?reportName=");
-      currentWindow2 += "<script>alert(document.getElementById('ReportViewerForm').action)</script>";
-      //for (int ch; (ch = serverInStream.read()) != -1; ) {
-      for(int i=0;i<currentWindow2.length();i++) {
-        int ch = currentWindow2.charAt(i);
-        if (currentWindow.length() < REPORT_SERVER.length()) {
-          currentWindow += (char) ch;
-        } else if (currentWindow.equalsIgnoreCase(REPORT_SERVER)) {
-          if (ch != '"') {
-            url += (char) ch;
-          } else {
-            itemsFound++;
-            String urlEncode = URLEncoder.encode(url, "UTF-8");
-            try {
-              if (urlEncode.substring(urlEncode.length() - 3, urlEncode.length()).toUpperCase().equals("%5C")) {
-                urlEncode = urlEncode.substring(0, urlEncode.length() - 3) + "\\";
-              }
-
-            } catch (Exception e) {
-              e.printStackTrace();
-            }
-            clientOutStream.print(RESOURCE_URL + REPORT_SERVER + urlEncode + (char) ch);
-            currentWindow = "";
-            url = "";
-          }
-        } else {
-          clientOutStream.print(currentWindow.charAt(0));
-          currentWindow = currentWindow.substring(1) + (char) ch;
-        }
-
-        //if(currentWindow.length() < REQUEST_SERVER_URL.length()) {
-        //  currentWindow += (char)ch;
-        //} else if(currentWindow.equalsIgnoreCase(REQUEST_SERVER_URL) && (char)ch == '?') {
-        //  itemsFound++;
-//
-        //  //clientOutStream.print(REPORT_ITEM_SERVLET_URL + "?cookie=" + cookie + "&");
-        //  currentWindow = "";
-        //} else {
-        //  clientOutStream.print(currentWindow.charAt(0));
-        //  currentWindow = currentWindow.substring(1) + (char)ch;
-        //}
-      }
-
-      clientOutStream.print(currentWindow);
-
-      if (DEBUG) {
-        System.out.println("ReportRequest - " + itemsFound + " references to the report server found.");
-      }
+    foot, a{
+      font-size:12px;
+      color:#333333;
+      text-decoration-line: none;
     }
-
-    serverInStream.close();
-    clientOutStream.close();
-
-  }
-
-  public final class ReportAuthenticator extends java.net.Authenticator
-  {
-    private String username = "TRIZ-HAOJIN\\report";
-    private String password = "111111Rp";
-
-    public ReportAuthenticator() {}
-
-    protected PasswordAuthentication getPasswordAuthentication()
-    {
-      return new PasswordAuthentication(username,(password.toCharArray()));
+    a:hover{
+      font-size:12px;
     }
-  }
-
-%>
-
-
-
+  </style>
+</head>
+<body>
+  <h3>This is a java server page (jsp) proxy for SSRS 2008. Follow the below contain to config your java server.<br>
+      这是SSRS2008的jsp代理服务，请根据如下步骤进行配置。
+  </h3>
+  <ul>
+    <li>If you run in tomcat please add the follow red content to the web.xml.<br/>
+      请在你的tomcat的web.xml文件里面添加如下红色内容。<br/>
+      <code>
+        &lt;servlet-mapping&gt;<br/>
+        &lt;servlet-name&gt;jsp&lt;/servlet-name&gt;<br/>
+        &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;<br/>
+        &lt;url-pattern&gt;*.jspx&lt;/url-pattern&gt;<br/>
+        <font color="red">&lt;url-pattern&gt;*.axd&lt;/url-pattern&gt;<br/>
+        &lt;url-pattern&gt;*.aspx&lt;/url-pattern&gt;<br/>
+          &lt;url-pattern&gt;*.ReportServer&lt;/url-pattern&gt;</font><br/>
+        &lt;/servlet-mapping&gt;<br/>
+      </code>
+    </li>
+    <li>
+      Copy the files to the root of your website(or proxy server), and copy the "lib/commons-lang3-3.3.2.jar" to your library.<br/>
+      复制所有文件到你的网站中（或你代理网站中）, 复制"lib/commons-lang3-3.3.2.jar"到你网站的library目录。
+    </li>
+    <li>
+      Change the SSRS authenticator account and password in file  "resource.jsp" and "ReportViewer.aspx".<br/>
+      在文件"resource.jsp" and "ReportViewer.aspx"中，更改相关的SSRS认证信息，用户名与密码。
+    <li>
+      Open your report"http://reportServer/ReportServer/Pages/ReportViewer.aspx?%2ftestReport&rs:Command=Render" in browser.<br/>
+      在浏览器中打开你的原始report地址 例如 "http://reportServer/ReportServer/Pages/ReportViewer.aspx?%2ftestReport&rs:Command=Render"。
+    </li>
+    <li>
+      Replace the domain to the proxy server "http://ssrsProxyServer/ReportServer/Pages/ReportViewer.aspx?%2ftestReport&rs:Command=Render".<br/>
+      替换里面域名部分为你的代理网站地址 例如"http://ssrsProxyServer/ReportServer/Pages/ReportViewer.aspx?%2ftestReport&rs:Command=Render"。
+    </li>
+    <li>
+      Done and test please.<br/>
+      完成并请测试。
+    </li>
+  </ul>
+<foot style="position:absolute;bottom:0px;width: 98%;">
+  <center>All rights reversed by <a href="http://www.boya-triz.com">博雅创智</a> Author <a href="mail:haojin@boya-triz.com">郝缙</a>, <a href="mail:xhguo@boya-triz.com">郭兴华</a>, <a href="mail:shanxuezhong@boya-triz.com">单学钟</a>, <a href="mail:zhangpenghui@boya-triz.com">张鹏辉</a></center>
+</foot>
+</body>
+</html>

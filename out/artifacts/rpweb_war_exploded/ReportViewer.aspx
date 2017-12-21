@@ -8,7 +8,5 @@
 
 
 <%
-        request.getRequestDispatcher("/resource.jsp?go=" + URLEncoder.encode("/ReportServer/Pages/ReportViewer.aspx?"+request.getQueryString(), "UTF-8")).forward(request,response);
-        // response.sendRedirect("/resource.jsp?go=" + URLEncoder.encode("/ReportServer/ScriptResource.axd?"+request.getQueryString(), "UTF-8"));
-        // requestServer(request, response);
-        %>
+    request.getRequestDispatcher("/resource.jsp?go=" + URLEncoder.encode("/ReportServer/Pages/ReportViewer.aspx?"+request.getQueryString(), "UTF-8")).forward(request,response);
+%>

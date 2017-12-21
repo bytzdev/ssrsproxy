@@ -13,10 +13,13 @@
   private final static String  REPORT_SERVER = "/ReportServer/";
   private final static String  HREF_H = "href=\"";
   private final static String  RESOURCE_URL = "resource.jsp?go=";
-  private final static String  SERVER_URL = "http://192.168.1.10";
+  private final static String  SERVER_URL = "http://192.168.1.10"; // 需要修改为report服务器的地址
+  // 该文件主要处理SSRS的静态资源
 %>
 
 <%
+  // 这里可以加验证，也可以不用加 start
+  // end
   requestServer(request, response);
 %>
 
@@ -134,19 +137,6 @@
   }
 
   private void forwardResponse(HttpURLConnection serverConnection, HttpServletResponse clientResponse) throws ServletException, IOException {
-
-    // Take the server's response and forward it to the client.
-
-//    String cookie = serverConnection.getHeaderField("Set-Cookie");
-//    if(cookie == null) {
-//      System.out.println("ReportRequest - ERROR: No cookie provided by report server.  Aborting.");
-//      return;
-//    }
-//
-//    if(cookie.indexOf(";") != -1) {
-//      cookie = cookie.substring(0, cookie.indexOf(";"));
-//    }
-
     String contentType = serverConnection.getContentType();
 
     clientResponse.setContentType(contentType);
@@ -155,82 +145,25 @@
     InputStream serverInStream = serverConnection.getInputStream();
     ServletOutputStream clientOutStream = clientResponse.getOutputStream();
 
-    if (!contentType.contains("text/html")) {
-      // Use a buffered stream to send all binary formats.
-      BufferedInputStream bis = new BufferedInputStream(serverInStream);
-      BufferedOutputStream bos = new BufferedOutputStream(clientOutStream);
+    BufferedInputStream bis = new BufferedInputStream(serverInStream);
+    BufferedOutputStream bos = new BufferedOutputStream(clientOutStream);
 
-      byte[] buff = new byte[BUFFER_SIZE];
-      int bytesRead;
+    byte[] buff = new byte[BUFFER_SIZE];
+    int bytesRead;
 
-      while (-1 != (bytesRead = bis.read(buff, 0, BUFFER_SIZE))) {
-        bos.write(buff, 0, bytesRead);
-      }
-      bis.close();
-      bos.close();
-    } else {
-      /*
-       * Use a character stream to send HTML to the client, replacing
-       */
-      String currentWindow = "";
-      String url = "";
-      int itemsFound = 0;
-
-        for (int ch; (ch = serverInStream.read()) != -1; ) {
-          if (currentWindow.length() < REPORT_SERVER.length()) {
-            currentWindow += (char) ch;
-          } else if (currentWindow.equalsIgnoreCase(REPORT_SERVER)) {
-            if (ch != '"') {
-              url += (char) ch;
-            } else {
-              itemsFound++;
-              String urlEncode = URLEncoder.encode(url, "UTF-8");
-              try {
-              if (urlEncode.substring(urlEncode.length() - 3, urlEncode.length()).toUpperCase().equals("%5C")) {
-                urlEncode = urlEncode.substring(0, urlEncode.length() - 3) + "\\";
-              }
-
-              } catch (Exception e) {
-                e.printStackTrace();
-              }
-              clientOutStream.print(RESOURCE_URL + REPORT_SERVER + urlEncode + (char) ch);
-              currentWindow = "";
-              url = "";
-            }
-          } else {
-            clientOutStream.print(currentWindow.charAt(0));
-            currentWindow = currentWindow.substring(1) + (char) ch;
-          }
-
-          //if(currentWindow.length() < REQUEST_SERVER_URL.length()) {
-          //  currentWindow += (char)ch;
-          //} else if(currentWindow.equalsIgnoreCase(REQUEST_SERVER_URL) && (char)ch == '?') {
-          //  itemsFound++;
-//
-          //  //clientOutStream.print(REPORT_ITEM_SERVLET_URL + "?cookie=" + cookie + "&");
-          //  currentWindow = "";
-          //} else {
-          //  clientOutStream.print(currentWindow.charAt(0));
-          //  currentWindow = currentWindow.substring(1) + (char)ch;
-          //}
-        }
-
-      clientOutStream.print(currentWindow);
-
-      if (DEBUG) {
-        System.out.println("ReportRequest - " + itemsFound + " references to the report server found.");
-      }
+    while (-1 != (bytesRead = bis.read(buff, 0, BUFFER_SIZE))) {
+      bos.write(buff, 0, bytesRead);
     }
-
+    bis.close();
+    bos.close();
     serverInStream.close();
     clientOutStream.close();
-
   }
 
   public final class ReportAuthenticator extends java.net.Authenticator
   {
-    private String username = "TRIZ-HAOJIN\\report";
-    private String password = "111111Rp";
+    private String username = "TRIZ-HAOJIN\\report"; // 需要修改为report服务器的认证
+    private String password = "111111Rp"; // 需要修改为report服务器的认证
 
     public ReportAuthenticator() {}
 

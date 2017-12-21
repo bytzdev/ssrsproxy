@@ -5,10 +5,6 @@
 <%@ page import = "javax.servlet.http.*"%>
 <%@ page import = "javax.servlet.http.*"%>
 
-
-
 <%
    request.getRequestDispatcher("/resource.jsp?go=" + URLEncoder.encode("/ReportServer/Reserved.ReportViewerWebControl.axd?"+request.getQueryString(), "UTF-8")).forward(request,response);
-  // response.("/resource.jsp?go=" + URLEncoder.encode("/ReportServer/Reserved.ReportViewerWebControl.axd?"+request.getQueryString(), "UTF-8"));
-   // requestServer(request, response);
 %>
