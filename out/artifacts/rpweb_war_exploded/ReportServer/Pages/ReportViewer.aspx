@@ -13,8 +13,8 @@
   private final static String  REPORT_SERVER = "/ReportServer/";
   private final static String  HREF_H = "href=\"";
   private final static String  RESOURCE_URL = "resource.jsp?go=";
-  private final static String  SERVER_URL = "http://192.168.1.10"; // 需要修改为report服务器地址
-  private final static String  REPORT_URL = "http://192.168.1.10/ReportServer/Pages/ReportViewer.aspx"; // 需要修改为report服务器对应地址
+  private final static String  SERVER_URL = "http://192.168.1.10"; // 需要修改为report服务器地址 TO-DO
+  private final static String  REPORT_URL = "http://192.168.1.10/ReportServer/Pages/ReportViewer.aspx"; // 需要修改为report服务器对应地址 TO-DO
   // 该文件主要处理SSRS的动态请求等
 %>
 <%
@@ -135,8 +135,8 @@
 
   public final class ReportAuthenticator extends java.net.Authenticator
   {
-    private String username = "TRIZ-HAOJIN\\report"; // 需要修改为report服务器的认证
-    private String password = "111111Rp";// 需要修改为report服务器的认证
+    private String username = "TRIZ-HAOJIN\\report"; // 需要修改为report服务器的认证 TO-DO
+    private String password = "111111Rp";// 需要修改为report服务器的认证 TO-DO
 
     public ReportAuthenticator() {}
 
