@@ -6,17 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bcb99a99-76d1-4b9d-928f-c1342a1148ae" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportServer/Pages/ReportViewer.aspx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportServer/Reserved.ReportServer" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportServer/Reserved.ReportViewerWebControl.axd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportServer/ScriptResource.axd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportServer/WebResource.axd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportViewer.aspx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/WEB-INF/lib/commons-lang3-3.3.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/resource.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="bcb99a99-76d1-4b9d-928f-c1342a1148ae" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,8 +40,8 @@
       <file leaf-file-name="help.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/help.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="58" />
+            <state relative-caret-position="285">
+              <caret line="33" column="59" lean-forward="false" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="59" />
               <folding>
                 <marker date="1513836667291" expanded="false" signature="2313:2353" ph="..." />
               </folding>
@@ -618,7 +608,7 @@
       <workItem from="1513652212873" duration="34559000" />
       <workItem from="1513732336870" duration="31482000" />
       <workItem from="1513818872365" duration="361000" />
-      <workItem from="1513821803385" duration="14811000" />
+      <workItem from="1513821803385" duration="15622000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1513830023138</created>
@@ -638,10 +628,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81213000" />
+    <option name="totallyTimeSpent" value="82024000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -658,7 +649,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1890625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1890625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1148,8 +1139,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/help.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="58" />
+        <state relative-caret-position="285">
+          <caret line="33" column="59" lean-forward="false" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="59" />
           <folding>
             <marker date="1513836667291" expanded="false" signature="2313:2353" ph="..." />
           </folding>
