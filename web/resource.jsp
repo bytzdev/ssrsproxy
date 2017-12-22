@@ -46,6 +46,7 @@
         if("SessionKeepAlive".equals(request.getParameter("OpType"))){
           isKeepAlive=true;
         }
+
         while(paramEnum.hasMoreElements()) {
           currentParam = (String) paramEnum.nextElement();
           if (!"go".equals(currentParam)) {

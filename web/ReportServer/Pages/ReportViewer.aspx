@@ -58,9 +58,9 @@
 
       // Establish HTTP GET connection to report server
       if(requestMethod.equals("GET")) {
-        urlString = REPORT_URL + "?" + parameterString;
+        urlString = REPORT_URL + "?" + request.getQueryString();
       }else if(requestMethod.equals("POST")) {
-        urlString = REPORT_URL + "?";
+        urlString = REPORT_URL + "?" + request.getQueryString();
       }
       if(DEBUG)
       {
@@ -80,22 +80,27 @@
       }
 
       URL url = new URL(urlString);
-      // Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP,new InetSocketAddress("127.0.0.1", 8888));
-      HttpURLConnection serverConnection = (HttpURLConnection) url.openConnection();
+      Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP,new InetSocketAddress("127.0.0.1", 8888));
+      HttpURLConnection serverConnection = (HttpURLConnection) url.openConnection(proxy);
 
-      serverConnection.setRequestMethod("POST");
-      serverConnection.setDoOutput(true);
+      serverConnection.setRequestMethod(requestMethod);
+      if(requestMethod.equals("POST")){
+        serverConnection.setDoOutput(true);
+      }
       serverConnection.setUseCaches(false);
       serverConnection.setFollowRedirects(false);
-      serverConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+
+      serverConnection.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0;)");
       serverConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
       serverConnection.setRequestProperty("Content-length", Integer.toString(parameterString.length()));
 
       // Send parameter string to report server
-      PrintWriter repOutStream = new PrintWriter(serverConnection.getOutputStream());
-      repOutStream.println(parameterString);
-      repOutStream.close();
-
+      if(requestMethod.equals("POST")){
+        PrintWriter repOutStream = new PrintWriter(serverConnection.getOutputStream());
+        repOutStream.println(parameterString);
+        repOutStream.close();
+      }
       forwardResponse(serverConnection, response);
     } catch (Exception e) {
       e.printStackTrace();

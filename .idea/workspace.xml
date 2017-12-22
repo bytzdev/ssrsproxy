@@ -7,13 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcb99a99-76d1-4b9d-928f-c1342a1148ae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/help.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/indexx.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/resourcee.jsp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportServer/Pages/ReportViewer.aspx" afterPath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportServer/Pages/ReportViewer.aspx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportViewer.aspx" afterPath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/ReportViewer.aspx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/resource.jsp" afterPath="$PROJECT_DIR$/out/artifacts/rpweb_war_exploded/resource.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/ReportServer/Pages/ReportViewer.aspx" afterPath="$PROJECT_DIR$/web/ReportServer/Pages/ReportViewer.aspx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/ReportViewer.aspx" afterPath="$PROJECT_DIR$/web/ReportViewer.aspx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/resource.jsp" afterPath="$PROJECT_DIR$/web/resource.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,8 +29,8 @@
       <file leaf-file-name="resource.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/resource.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="170" column="68" lean-forward="false" selection-start-line="170" selection-start-column="68" selection-end-line="170" selection-end-column="68" />
+            <state relative-caret-position="399">
+              <caret line="117" column="7" lean-forward="true" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -46,21 +46,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="help.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="help.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/help.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="304">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding>
+                <marker date="1513836667291" expanded="false" signature="2313:2353" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReportViewer.aspx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ReportViewer.aspx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/ReportServer/Pages/ReportViewer.aspx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2280">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="585">
+              <caret line="103" column="50" lean-forward="true" selection-start-line="103" selection-start-column="50" selection-end-line="103" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -101,7 +103,7 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="1045">
               <caret line="55" column="9" lean-forward="true" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
               <folding>
                 <element signature="n#style#0;n#foot#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -158,6 +160,10 @@
       <find>currentWindow</find>
       <find>StringEscapeUtils</find>
       <find>There has been an error.  Please check the system log for details</find>
+      <find>urlString</find>
+      <find>User-Agent</find>
+      <find>requestMethod</find>
+      <find>headerName</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,10 +190,11 @@
         <option value="$PROJECT_DIR$/web/ReportServer/WebResource.axd" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/ReportViewer.aspx" />
+        <option value="$PROJECT_DIR$/web/help.jsp" />
         <option value="$PROJECT_DIR$/web/resource.jsp" />
         <option value="$PROJECT_DIR$/web/resource.jsp" />
         <option value="$PROJECT_DIR$/web/ReportServer/Pages/ReportViewer.aspx" />
-        <option value="$PROJECT_DIR$/web/ReportViewer.aspx" />
       </list>
     </option>
   </component>
@@ -315,6 +322,19 @@
               <item name="rpweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="rpweb" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpweb" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="ReportServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpweb" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="ReportServer" type="462c0819:PsiDirectoryNode" />
+              <item name="Pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -597,12 +617,20 @@
       <workItem from="1513652212873" duration="34559000" />
       <workItem from="1513732336870" duration="31482000" />
       <workItem from="1513818872365" duration="361000" />
-      <workItem from="1513821803385" duration="7462000" />
+      <workItem from="1513821803385" duration="14553000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1513830023138</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1513830023138</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73864000" />
+    <option name="totallyTimeSpent" value="80955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -644,6 +672,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1040,22 +1072,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/resource.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="170" column="68" lean-forward="false" selection-start-line="170" selection-start-column="68" selection-end-line="170" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/ReportServer/Pages/ReportViewer.aspx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2280">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/ReportServer/Reserved.ReportServer">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1088,16 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="55" column="9" lean-forward="true" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#foot#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/ReportViewer.aspx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -1108,8 +1114,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/help.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        <state relative-caret-position="304">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <marker date="1513836667291" expanded="false" signature="2313:2353" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1045">
+          <caret line="55" column="9" lean-forward="true" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#foot#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/resource.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="117" column="7" lean-forward="true" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ReportServer/Pages/ReportViewer.aspx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="103" column="50" lean-forward="true" selection-start-line="103" selection-start-column="50" selection-end-line="103" selection-end-column="50" />
           <folding />
         </state>
       </provider>
